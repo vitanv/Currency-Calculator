@@ -11,7 +11,9 @@ export class App extends React.Component{
       to:"EUR",
       rate:1,
     }
-  }totalReactPackages
+    this.changeFrom = this.changeFrom.bind(this);
+    this.changeTo = this.changeFrom.bind(this);
+  }
   componentDidMount() {
     fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
         .then(response => response.json())
@@ -19,14 +21,33 @@ export class App extends React.Component{
           this.setState({rate:data.result});
         });
   }
+
+  changeFrom = (value) =>{
+    this.setState({from: value});
+  }
+
+  changeTo = (value) =>{
+    this.setState({to: value});
+  }
+
   render(){
     return (
       <div className="container" id="wrapper">
           <h1>Currency Converter</h1>
           <div className='input'>
+            <select id="from-currency" onChange={(e) => this.changeFrom(e.target.value)}>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+            </select>
             <input type="number"></input>
             <p>to</p>
             <input type="number"></input>
+            <select id="to-currency" onChange={(e) => this.changeTo(e.target.value)}>
+              <option value="EUR">EUR</option>
+              <option value="USD">USD</option>
+              <option value="GBP">GBP</option>
+            </select>
           </div>
           <button className='btn-primary'>Convert</button>
           <span id="result">{this.state.rate}</span>
