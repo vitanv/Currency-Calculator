@@ -56,7 +56,7 @@ export class App extends React.Component{
           </div>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)}></input>
           <button className='btn-primary'>Convert</button>
-          <span id="result">{this.state.rate * this.state.amount}</span>
+          <span id="result">{this.state.rate * this.state.amount} at a rate of {this.state.rate} {this.state.to} to 1 {this.state.from} </span>
       </div>
     );
   }
