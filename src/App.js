@@ -72,9 +72,8 @@ export class App extends React.Component{
               {this.createList()}
             </select>
           </div>
-          <input type="number" onChange={(e) => this.changeAmount(e.target.value)}></input>
-          <button className='btn-primary'>Convert</button>
-          <span id="result">{this.state.rate * this.state.amount} at a rate of {this.state.rate}  to 1 {this.state.from} </span>
+          <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
+          <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate}  to 1 {this.state.from} </span>
       </div>
     );
   }
