@@ -27,12 +27,19 @@ export class App extends React.Component{
 
   changeFrom = (value) =>{
     if(value == this.state.to){
-
+      this.setState({
+        to:this.state.from,
+      });
     }
     this.setState({from: value});
   }
 
   changeTo = (value) =>{
+    if(value == this.state.from){
+      this.setState({
+        from:this.state.to,
+      });
+    }
     this.setState({to: value});
   }
 
@@ -65,12 +72,12 @@ export class App extends React.Component{
       <div className="container" id="wrapper">
           <h1>Currency Converter</h1>
           <div className='input'>
-            <select id="from-currency" value="USD" onChange={(e) => this.changeFrom(e.target.value)}>
+            <select id="from-currency" value={this.state.from} onChange={(e) => this.changeFrom(e.target.value)}>
               {this.createList()} 
             </select>
             <p>to</p>
             
-            <select id="to-currency" value="GBP" onChange={(e) => this.changeTo(e.target.value)}>
+            <select id="to-currency" value={this.state.to} onChange={(e) => this.changeTo(e.target.value)}>
               {this.createList()}
             </select>
           </div>
