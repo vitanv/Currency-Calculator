@@ -15,6 +15,7 @@ export class App extends React.Component{
     this.changeFrom = this.changeFrom.bind(this);
     this.changeTo = this.changeFrom.bind(this);
     this.changeAmount = this.changeAmount.bind(this);
+    this.createList = this.createList.bind(this);
   }
   componentDidMount() {
     fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
@@ -36,22 +37,27 @@ export class App extends React.Component{
     this.setState({amount:value});
   }
 
+  createList = () =>{
+    let list = ["USD","GBP","EUR"];
+    let option = [];
+    for(let i = 0; i < 3;i++){
+      option.push(<option value={list[i]}>{list[i]}</option>)
+    }
+    return option;
+  }
+
   render(){
     return (
       <div className="container" id="wrapper">
           <h1>Currency Converter</h1>
           <div className='input'>
             <select id="from-currency" onChange={(e) => this.changeFrom(e.target.value)}>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
+              {this.createList()} 
             </select>
             <p>to</p>
             
             <select id="to-currency" onChange={(e) => this.changeTo(e.target.value)}>
-              <option value="EUR">EUR</option>
-              <option value="USD">USD</option>
-              <option value="GBP">GBP</option>
+              {this.createList()}
             </select>
           </div>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)}></input>
