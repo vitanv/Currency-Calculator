@@ -18,3 +18,11 @@ html, body  {
   display: flex;
   margin: 0.5rem;
 }
+.input > :first-child{
+  width: 12rem;
+}
+
+.input > :last-child{
+  width: 12rem;
+}
+
