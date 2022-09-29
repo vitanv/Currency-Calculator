@@ -27,7 +27,7 @@ export class App extends React.Component{
         });
   }
 
-  changeFrom = (value) =>{
+  changeFrom = (value) =>{  
     if(value == this.state.to){
       this.setState({
         to:this.state.from,
@@ -64,7 +64,7 @@ export class App extends React.Component{
               "UAH", "AED", "UYU", "USD", "UZS", "VUV", "VEF", "VND", "YER", "ZMK"];
     let option = [];
     for(let i = 0; i < list.length;i++){
-      option.push(<option value={list[i]} className="currency-flag currency-flag-usd">{list[i]}</option>)
+      option.push({value:list[i], label:list[i]});
     }
     return option;
   }
@@ -74,15 +74,19 @@ export class App extends React.Component{
       <div className="container" id="wrapper">
           <h1>Currency Converter</h1>
           <div className='input'>
-            <select id="from-currency" value={this.state.from} onChange={(e) => this.changeFrom(e.target.value)}>
-              {this.createList()} 
-            </select>
-            <p>to</p>
+            <Select
+              onChange = {(e) => this.changeFrom(e.value)}
+              options = {this.createList()}
+              defaultValue={{ label: this.state.from, value: this.state.from }}
+            />
             
-            <select id="to-currency" value={this.state.to} onChange={(e) => this.changeTo(e.target.value)}>
-              
-              {this.createList()}
-            </select>
+            <p>to</p>
+            <Select
+              options = {this.createList()}
+              onChange = {(e) => this.changeTo(e.value)}
+              defaultValue={{ label: this.state.to, value: this.state.to }}
+            />
+            
           </div>
           <div className='currency-flag currency-flag-usd'>a</div>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
