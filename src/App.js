@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import '../node_modules/currency-flags/dist/currency-flags.min.css';
+import Select from 'react-select';
 
 
 
@@ -62,7 +64,7 @@ export class App extends React.Component{
               "UAH", "AED", "UYU", "USD", "UZS", "VUV", "VEF", "VND", "YER", "ZMK"];
     let option = [];
     for(let i = 0; i < list.length;i++){
-      option.push(<option value={list[i]}>{list[i]}</option>)
+      option.push(<option value={list[i]} className="currency-flag currency-flag-usd">{list[i]}</option>)
     }
     return option;
   }
@@ -78,9 +80,11 @@ export class App extends React.Component{
             <p>to</p>
             
             <select id="to-currency" value={this.state.to} onChange={(e) => this.changeTo(e.target.value)}>
+              
               {this.createList()}
             </select>
           </div>
+          <div className='currency-flag currency-flag-usd'>a</div>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
           <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate}  to 1 {this.state.from} </span>
       </div>
