@@ -64,7 +64,7 @@ export class App extends React.Component{
               "UAH", "AED", "UYU", "USD", "UZS", "VUV", "VEF", "VND", "YER", "ZMK"];
     let option = [];
     for(let i = 0; i < list.length;i++){
-      option.push({value:list[i], label:<div className={"currency-flag currency-flag-"+list[i].toLowerCase()}>{list[i]}</div>});
+      option.push({value:list[i], label:<div> <div className={"currency-flag currency-flag-"+list[i].toLowerCase()}></div><p>{list[i]}</p></div>});
     }
     return option;
   }
@@ -77,14 +77,15 @@ export class App extends React.Component{
             <Select
               onChange = {(e) => this.changeFrom(e.value)}
               options = {this.createList()}
-              defaultValue={{ label:<div className={"currency-flag currency-flag-"+this.state.from.toLowerCase()}>{this.state.from}</div>, value: this.state.from }}
+              defaultValue={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.from.toLowerCase()}></div><p>{this.state.from}</p></div>, value: this.state.from }}
             />
             
             <p>to</p>
             <Select
+
               options = {this.createList()}
               onChange = {(e) => this.changeTo(e.value)}
-              defaultValue={{ label: <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}>{this.state.to}</div>, value: this.state.to }}
+              defaultValue={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
             />
             
           </div>
