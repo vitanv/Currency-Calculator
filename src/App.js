@@ -29,7 +29,6 @@ export class App extends React.Component{
   }
 
   switchCurrencies = () => {
-    
     let temp = this.state.from;
     this.setState({
       from: this.state.to,
@@ -38,7 +37,6 @@ export class App extends React.Component{
   }
 
   changeFrom = (value) =>{  
-    console.log("here");
     if(value == this.state.to){
       this.setState({
         to:this.state.from,
@@ -112,7 +110,7 @@ export class App extends React.Component{
           </div>
           <button type='button' className='btn btn-success' onClick={() => this.switchCurrencies()}>{"<>"}</button>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
-          <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate}  to 1 {this.state.from} </span>
+          <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate} {this.state.to}  to 1 {this.state.from} </span>
       </div>
     );
   }
