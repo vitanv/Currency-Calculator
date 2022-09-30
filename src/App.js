@@ -34,6 +34,11 @@ export class App extends React.Component{
       });
     }
     this.setState({from: value});
+    fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({rate:data.result});
+        });
   }
 
   changeTo = (value) =>{
@@ -43,6 +48,11 @@ export class App extends React.Component{
       });
     }
     this.setState({to: value});
+    fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({rate:data.result});
+        });
   }
 
   changeAmount = (value) =>{
