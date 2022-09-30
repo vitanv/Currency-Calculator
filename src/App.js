@@ -15,7 +15,7 @@ export class App extends React.Component{
       amount:0,
     }
     this.changeFrom = this.changeFrom.bind(this);
-    this.changeTo = this.changeFrom.bind(this);
+    this.changeTo = this.changeTo.bind(this);
     this.changeAmount = this.changeAmount.bind(this);
     this.createList = this.createList.bind(this);
     this.switchCurrencies = this.switchCurrencies.bind(this);
@@ -29,7 +29,7 @@ export class App extends React.Component{
   }
 
   switchCurrencies = () => {
-    console.log("here");
+    
     let temp = this.state.from;
     this.setState({
       from: this.state.to,
@@ -38,6 +38,7 @@ export class App extends React.Component{
   }
 
   changeFrom = (value) =>{  
+    console.log("here");
     if(value == this.state.to){
       this.setState({
         to:this.state.from,
@@ -70,18 +71,18 @@ export class App extends React.Component{
   }
 
   createList = () =>{
-    let list = ["AFA", "ALL", "DZD", "AOA", "ARS", "AMD", "AWG", "AUD", "AZN", "BSD", "BHD", "BDT", "BBD", "BYR",
-              "BEF", "BZD", "BMD", "BTN", "BTC", "BOB", "BAM", "BWP", "BRL", "GBP", "BND", "BGN", "BIF", "KHR",
-              "CAD", "CVE", "KYD", "XOF", "XAF", "XPF", "CLP", "CNY", "COP", "KMF", "CDF", "CRC", "HRK", "CUC",
-              "CZK", "DKK", "DJF", "DOP", "XCD", "EGP", "ERN", "EEK", "ETB", "EUR", "FKP", "FJD", "GMD", "GEL",
-              "DEM", "GHS", "GIP", "GRD", "GTQ", "GNF", "GYD", "HTG", "HNL", "HKD", "HUF", "ISK", "INR", "IDR",
-              "IRR", "IQD", "ILS", "ITL", "JMD", "JPY", "JOD", "KZT", "KES", "KWD", "KGS", "LAK", "LVL", "LBP",
-              "LSL", "LRD", "LYD", "LTL", "MOP", "MKD", "MGA", "MWK", "MYR", "MVR", "MRO", "MUR", "MXN", "MDL",
-              "MNT", "MAD", "MZM", "MMK", "NAD", "NPR", "ANG", "TWD", "NZD", "NIO", "NGN", "KPW", "NOK", "OMR",
-              "PKR", "PAB", "PGK", "PYG", "PEN", "PHP", "PLN", "QAR", "RON", "RUB", "RWF", "SVC", "WST", "SAR",
-              "RSD", "SCR", "SLL", "SGD", "SKK", "SBD", "SOS", "ZAR", "KRW", "XDR", "LKR", "SHP", "SDG", "SRD",
-              "SZL", "SEK", "CHF", "SYP", "STD", "TJS", "TZS", "THB", "TOP", "TTD", "TND", "TRY", "TMT", "UGX",
-              "UAH", "AED", "UYU", "USD", "UZS", "VUV", "VEF", "VND", "YER", "ZMK"];
+    let list = ["AFN", "ALL", "DZD", "AOA", "ARS", "AMD", "AWG", "AUD", "AZN", "BSD", "BHD", "BDT", "BBD","BYN",
+              "BZD", "BMD", "BTN", "BOB", "BAM", "BWP", "BRL", "GBP", "BND", "BGN", "BIF", "KHR", "CAD", 
+              "CVE", "KYD", "XOF", "XAF", "XPF", "CLP", "CNY", "COP", "KMF", "CDF", "CRC", "HRK", "CUP","CZK", 
+              "DKK", "DJF", "DOP", "XCD", "EGP", "ERN", "EEK", "ETB", "EUR", "FKP", "FJD", "GMD", "GEL","DEM", 
+              "GHS", "GIP", "GRD", "GTQ", "GNF", "GYD", "HTG", "HNL", "HKD", "HUF", "ISK", "INR", "IDR","IRR", 
+              "IQD", "ILS", "ITL", "JMD", "JPY", "JOD", "KZT", "KES", "KWD", "KGS", "LAK", "LVL", "LBP","LSL", 
+              "LRD", "LYD", "LTL", "MOP", "MKD", "MGA", "MWK", "MYR", "MVR", "MRO", "MUR", "MXN", "MDL","MNT", 
+              "MAD", "MZM", "MMK", "NAD", "NPR", "ANG", "TWD", "NZD", "NIO", "NGN", "KPW", "NOK", "OMR","PKR", 
+              "PAB", "PGK", "PYG", "PEN", "PHP", "PLN", "QAR", "RON", "RUB", "RWF", "SVC", "WST", "SAR","RSD", 
+              "SCR", "SLL", "SGD", "SKK", "SBD", "SOS", "ZAR", "KRW", "XDR", "LKR", "SHP", "SDG", "SRD","SZL", 
+              "SEK", "CHF", "SYP", "STD", "TJS", "TZS", "THB", "TOP", "TTD", "TND", "TRY", "TMT", "UGX","UAH", 
+              "AED", "UYU", "USD", "UZS", "VUV", "VEF", "VND", "YER", "ZMW"];
     let option = [];
     for(let i = 0; i < list.length;i++){
       option.push({value:list[i], label:<div> <div className={"currency-flag currency-flag-"+list[i].toLowerCase()}></div><p>{list[i]}</p></div>});
@@ -104,8 +105,8 @@ export class App extends React.Component{
             <p>to</p>
             <Select
               value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
-              options = {this.createList()}
               onChange = {(e) => this.changeTo(e.value)}
+              options = {this.createList()}
             />
             
           </div>
