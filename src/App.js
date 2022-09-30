@@ -18,13 +18,23 @@ export class App extends React.Component{
     this.changeTo = this.changeFrom.bind(this);
     this.changeAmount = this.changeAmount.bind(this);
     this.createList = this.createList.bind(this);
+    this.switchCurrencies = this.switchCurrencies.bind(this);
   }
-  componentDidMount() {
+  componentDidMount = () => {
     fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
         .then(response => response.json())
         .then(data => {
           this.setState({rate:data.result});
         });
+  }
+
+  switchCurrencies = () => {
+    console.log("here");
+    let temp = this.state.from;
+    this.setState({
+      from: this.state.to,
+      to: temp,
+    })
   }
 
   changeFrom = (value) =>{  
@@ -85,20 +95,21 @@ export class App extends React.Component{
           <h1>Currency Converter</h1>
           <div className='input'>
             <Select
+              value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.from.toLowerCase()}></div><p>{this.state.from}</p></div>, value: this.state.from }}
               onChange = {(e) => this.changeFrom(e.value)}
               options = {this.createList()}
-              defaultValue={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.from.toLowerCase()}></div><p>{this.state.from}</p></div>, value: this.state.from }}
+              
             />
             
             <p>to</p>
             <Select
-
+              value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
               options = {this.createList()}
               onChange = {(e) => this.changeTo(e.value)}
-              defaultValue={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
             />
             
           </div>
+          <button type='button' className='btn btn-success' onClick={() => this.switchCurrencies()}>{"<>"}</button>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
           <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate}  to 1 {this.state.from} </span>
       </div>
