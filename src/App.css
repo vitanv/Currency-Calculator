@@ -14,8 +14,17 @@ html, body  {
   flex-direction: column;
 }
 
+#wraper{
+  height: 80vh;
+}
+
+#converter{
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+  border: solid;
+}
+
 .input{
-  display: flex;
   margin: 0.5rem;
 }
 .input > :first-child{

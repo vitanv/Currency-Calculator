@@ -90,9 +90,11 @@ export class App extends React.Component{
 
   render(){
     return (
-      <div className="container" id="wrapper">
-          <h1>Currency Converter</h1>
+      <div className='container' id='wraper'>
+        <h1 id="title">Currency Converter</h1>
+        <div className="container" id="converter">
           <div className='input'>
+            <p>From:</p>
             <Select
               value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.from.toLowerCase()}></div><p>{this.state.from}</p></div>, value: this.state.from }}
               onChange = {(e) => this.changeFrom(e.value)}
@@ -100,7 +102,7 @@ export class App extends React.Component{
               
             />
             
-            <p>to</p>
+            <p>To</p>
             <Select
               value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
               onChange = {(e) => this.changeTo(e.value)}
@@ -111,7 +113,10 @@ export class App extends React.Component{
           <button type='button' className='btn btn-success' onClick={() => this.switchCurrencies()}>{"<>"}</button>
           <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
           <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate} {this.state.to}  to 1 {this.state.from} </span>
+        </div>
       </div>
+
+      
     );
   }
 }
