@@ -35,3 +35,14 @@ html, body  {
   width: 12rem;
 }
 
+button{
+  margin: 0.5rem;
+  height: 2.3em;
+  width: 3em;
+}
+
+#arrows{
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+

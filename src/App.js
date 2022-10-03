@@ -101,7 +101,7 @@ export class App extends React.Component{
               options = {this.createList()}
               
             />
-            <button type='button' className='btn btn-success' onClick={() => this.switchCurrencies()}>{"<>"}</button>
+            <button type='button' className='btn' onClick={() => this.switchCurrencies()}><span id="arrows">{"<>"}</span></button>
             <p>To:</p>
             <Select
               value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
