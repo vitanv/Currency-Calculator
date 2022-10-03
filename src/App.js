@@ -101,18 +101,21 @@ export class App extends React.Component{
               options = {this.createList()}
               
             />
-            
-            <p>To</p>
+            <button type='button' className='btn btn-success' onClick={() => this.switchCurrencies()}>{"<>"}</button>
+            <p>To:</p>
             <Select
               value={{ label:<div> <div className={"currency-flag currency-flag-"+this.state.to.toLowerCase()}></div><p>{this.state.to}</p></div>, value: this.state.to }}
               onChange = {(e) => this.changeTo(e.value)}
               options = {this.createList()}
             />
-            
+            <p>Amount:</p>
+            <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
           </div>
-          <button type='button' className='btn btn-success' onClick={() => this.switchCurrencies()}>{"<>"}</button>
-          <input type="number" onChange={(e) => this.changeAmount(e.target.value)} placeholder="0"></input>
-          <span id="result">{this.state.rate * this.state.amount} {this.state.to} at a rate of {this.state.rate} {this.state.to}  to 1 {this.state.from} </span>
+          <div className='output'>
+              <p>Result: {this.state.rate * this.state.amount}</p>
+              <p>The rate is {this.state.rate} {this.state.to}  to 1 {this.state.from}</p>
+          </div>
+          
         </div>
       </div>
 
