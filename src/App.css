@@ -4,6 +4,9 @@ html, body  {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: midnightblue;
+  font-family: Arial, Helvetica, sans-serif;
+  color: antiquewhite;
 }
 
 
@@ -21,28 +24,29 @@ html, body  {
 #converter{
   margin-top: 5rem;
   margin-bottom: 8rem;
-  border: solid;
+  background-color: #362C87;
+  padding: 1.5rem;
 }
 
 .input{
   margin: 0.5rem;
 }
-.input > :first-child{
-  width: 12rem;
-}
 
-.input > :last-child{
-  width: 12rem;
-}
-
-button{
-  margin: 0.5rem;
-  height: 2.3em;
-  width: 3em;
+.btn{
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 #arrows{
   display: inline-block;
   transform: rotate(-90deg);
 }
+
+.output{
+  font-size: large;
+  font-weight: bolder;
+
+}
+
+
 
