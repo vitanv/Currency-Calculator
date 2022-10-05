@@ -14,6 +14,7 @@ export class App extends React.Component{
       rate:1,
       amount:0,
     }
+    this.callApi = this.callApi.bind(this);
     this.changeFrom = this.changeFrom.bind(this);
     this.changeTo = this.changeTo.bind(this);
     this.changeAmount = this.changeAmount.bind(this);
@@ -21,6 +22,10 @@ export class App extends React.Component{
     this.switchCurrencies = this.switchCurrencies.bind(this);
   }
   componentDidMount = () => {
+    this.callApi();
+  }
+
+  callApi = () => {
     fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
         .then(response => response.json())
         .then(data => {
@@ -43,11 +48,7 @@ export class App extends React.Component{
       });
     }
     this.setState({from: value});
-    fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({rate:data.result});
-        });
+    this.callApi();
   }
 
   changeTo = (value) =>{
@@ -57,11 +58,7 @@ export class App extends React.Component{
       });
     }
     this.setState({to: value});
-    fetch('https://api.exchangerate.host/convert?from='+this.state.from+'&to='+this.state.to)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({rate:data.result});
-        });
+    this.callApi();
   }
 
   changeAmount = (value) =>{
