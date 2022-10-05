@@ -39,6 +39,7 @@ export class App extends React.Component{
       from: this.state.to,
       to: temp,
     })
+    this.callApi();
   }
 
   changeFrom = (value) =>{  
