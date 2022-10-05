@@ -1,4 +1,5 @@
-html, body  {
+html,
+body {
   margin: 0;
   height: 100%;
   display: flex;
@@ -10,43 +11,40 @@ html, body  {
 }
 
 
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-#wraper{
+#wraper {
   height: 80vh;
 }
 
-#converter{
+#converter {
   margin-top: 5rem;
   margin-bottom: 8rem;
   background-color: #362C87;
   padding: 1.5rem;
 }
 
-.input{
+.input {
   margin: 0.5rem;
 }
 
-.btn{
+.btn {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
 }
 
-#arrows{
+#arrows {
   display: inline-block;
   transform: rotate(-90deg);
 }
 
-.output{
+.output {
   font-size: large;
   font-weight: bolder;
 
 }
-
-
-
