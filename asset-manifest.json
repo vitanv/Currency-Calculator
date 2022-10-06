@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Currency-Calculator/static/css/main.1f2a159a.css",
+    "main.js": "/Currency-Calculator/static/js/main.bfd6484c.js",
+    "index.html": "/Currency-Calculator/index.html",
+    "main.1f2a159a.css.map": "/Currency-Calculator/static/css/main.1f2a159a.css.map",
+    "main.bfd6484c.js.map": "/Currency-Calculator/static/js/main.bfd6484c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f2a159a.css",
+    "static/js/main.bfd6484c.js"
+  ]
+}
